@@ -1,0 +1,59 @@
+services:
+  # Nginx Web Server
+  nginx:
+    image: nginx:alpine
+    container_name: ryokan_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - ryokan_network
+
+  # Laravel Application (PHP-FPM)
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: ryokan_app
+    volumes:
+      - ./src:/var/www/html
+    environment:
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=ryokan_website
+      - DB_USERNAME=ryokan_user
+      - DB_PASSWORD=secure_password
+    depends_on:
+      - mysql
+    networks:
+      - ryokan_network
+
+  # MySQL Database
+  mysql:
+    image: mysql:8.4
+    container_name: ryokan_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: ryokan_website
+      MYSQL_USER: ryokan_user
+      MYSQL_PASSWORD: secure_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - ryokan_network
+
+# Named volumes for data persistence
+volumes:
+  mysql_data:
+    driver: local
+
+# Custom network for container communication
+networks:
+  ryokan_network:
+    driver: bridge

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Design Test - 丘の城 ロジカ亭</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .viewport-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .test-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .breakpoint-indicator {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: #333;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-size: 12px;
+            z-index: 9999;
+        }
+        @media (max-width: 480px) {
+            .breakpoint-indicator::after { content: "Mobile (≤480px)"; }
+        }
+        @media (min-width: 481px) and (max-width: 767px) {
+            .breakpoint-indicator::after { content: "Large Mobile (481-767px)"; }
+        }
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .breakpoint-indicator::after { content: "Tablet (768-1023px)"; }
+        }
+        @media (min-width: 1024px) {
+            .breakpoint-indicator::after { content: "Desktop (≥1024px)"; }
+        }
+    </style>
+</head>
+<body>
+    <div class="breakpoint-indicator"></div>
+
+    <div class="test-container">
+        <h1>レスポンシブデザイン テスト</h1>
+
+        <div class="viewport-info">
+            <h3>テスト手順</h3>
+            <ol>
+                <li>ブラウザウィンドウのサイズを変更して各ブレークポイントをテスト</li>
+                <li>モバイル（≤480px）、大型モバイル（481-767px）、タブレット（768-1023px）、デスクトップ（≥1024px）</li>
+                <li>各ブラウザ（Chrome、Firefox、Safari、Edge）でテスト</li>
+                <li>デベロッパーツールのデバイスエミュレーションを使用</li>
+            </ol>
+        </div>
+
+        <div class="test-grid">
+            <div class="test-item">
+                <h3>ナビゲーション</h3>
+                <ul>
+                    <li>✓ モバイルでハンバーガーメニュー表示</li>
+                    <li>✓ タブレット以上で横並びメニュー</li>
+                    <li>✓ スムーズなアニメーション</li>
+                    <li>✓ アクセシビリティ対応</li>
+                </ul>
+            </div>
+
+            <div class="test-item">
+                <h3>ヒーローセクション</h3>
+                <ul>
+                    <li>✓ レスポンシブなフォントサイズ</li>
+                    <li>✓ 適切な余白調整</li>
+                    <li>✓ 読みやすい行間</li>
+                    <li>✓ 中央揃えレイアウト</li>
+                </ul>
+            </div>
+
+            <div class="test-item">
+                <h3>施設グリッド</h3>
+                <ul>
+                    <li>✓ モバイル：1列</li>
+                    <li>✓ タブレット：2列</li>
+                    <li>✓ デスクトップ：2列</li>
+                    <li>✓ 適切なギャップ</li>
+                </ul>
+            </div>
+
+            <div class="test-item">
+                <h3>アクセス情報</h3>
+                <ul>
+                    <li>✓ モバイル：縦積み</li>
+                    <li>✓ タブレット以上：2列</li>
+                    <li>✓ 読みやすいレイアウト</li>
+                    <li>✓ 適切な情報階層</li>
+                </ul>
+            </div>
+
+            <div class="test-item">
+                <h3>フッター</h3>
+                <ul>
+                    <li>✓ モバイル：中央揃え</li>
+                    <li>✓ タブレット以上：3列</li>
+                    <li>✓ 適切なリンク配置</li>
+                    <li>✓ コピーライト表示</li>
+                </ul>
+            </div>
+
+            <div class="test-item">
+                <h3>ブラウザ互換性</h3>
+                <ul>
+                    <li>✓ Chrome（最新版）</li>
+                    <li>✓ Firefox（最新版）</li>
+                    <li>✓ Safari（最新版）</li>
+                    <li>✓ Edge（最新版）</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; padding: 20px; background: #e8f5e8; border-radius: 5px;">
+            <h3>テスト完了チェックリスト</h3>
+            <p>以下の項目をすべて確認してください：</p>
+            <ul>
+                <li>□ 各ブレークポイントでレイアウトが適切に変更される</li>
+                <li>□ モバイルナビゲーションが正常に動作する</li>
+                <li>□ テキストが読みやすいサイズで表示される</li>
+                <li>□ 画像や要素が適切にスケールされる</li>
+                <li>□ 横スクロールが発生しない</li>
+                <li>□ タッチ操作が快適に行える</li>
+                <li>□ 全ブラウザで一貫した表示</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Display current viewport dimensions
+        function updateViewportInfo() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            console.log(`Viewport: ${width}x${height}px`);
+        }
+
+        window.addEventListener('resize', updateViewportInfo);
+        updateViewportInfo();
+    </script>
+</body>
+</html>

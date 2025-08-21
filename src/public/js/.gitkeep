@@ -1,0 +1,8 @@
+# JavaScript Files Directory
+
+This directory contains JavaScript files for the ryokan website.
+
+## Structure:
+- main.js - Core JavaScript functionality
+- components/ - Reusable JavaScript components
+- vendor/ - Third-party JavaScript libraries

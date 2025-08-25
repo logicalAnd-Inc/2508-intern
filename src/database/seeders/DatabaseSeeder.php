@@ -16,8 +16,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             NewsSeeder::class,
-            MenuSeeder::class,
             RoomSeeder::class,
+            OnsenSeeder::class,
+            RestaurantSeeder::class,
+            AmusementSeeder::class,
+            RoomDisplaySeeder::class,
         ]);
     }
 }
